@@ -55,7 +55,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asVector3()->equals($position) && $chestPosition->level === $position->level)
+            if($chestPosition->asPosition()->equals($position))
                 return $chest;
         }
 
@@ -66,7 +66,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asVector3()->equals($position) && $chestPosition->level === $position->level)
+            if($chestPosition->asPosition()->equals($position))
                 return true;
         }
 
@@ -76,7 +76,7 @@ class ChestManager{
     public static function unlockChest(Position $position) : void{
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asVector3()->equals($position) && $chestPosition->level === $position->level)
+            if($chestPosition->asPosition()->equals($position))
                 unset(self::$chests[$index]);
         }
     }
