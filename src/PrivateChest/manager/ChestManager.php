@@ -36,7 +36,7 @@ class ChestManager{
         while($row = $db->fetchArray(SQLITE3_ASSOC)){
             foreach(self::$chests as $index => $value){
                 if(!self::getChest(new Position($row["x"], $row["y"], $row["z"], Server::getInstance()->getLevelByName($row["level"]))))
-                    Main::getDb()->query("DELETE FROM 'ChestManager' WHERE x = '{$row['x']}' AND y = '{$row['y']}' AND z = '{$row['z']}'");
+                    Main::getDb()->query("DELETE FROM 'ChestManager' WHERE x = '{$row['x']}' AND y = '{$row['y']}' AND z = '{$row['z']}' AND level = '{$row['level']}'");
             }
         }
 
@@ -56,7 +56,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asPosition()->equels($position))
+            if($chestPosition->equels($position))
                 return $chest;
         }
 
@@ -67,7 +67,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asPosition()->equals($position))
+            if($chestPosition->equals($position))
                 return true;
         }
 
@@ -77,7 +77,7 @@ class ChestManager{
     public static function unlockChest(Position $position) : void{
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asPosition()->equals($position))
+            if($chestPosition->equals($position))
                 unset(self::$chests[$index]);
         }
     }
