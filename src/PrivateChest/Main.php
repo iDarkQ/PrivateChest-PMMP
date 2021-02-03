@@ -26,7 +26,7 @@ class Main extends PluginBase{
         ListenerManager::init();
         BlockManager::init();
         ChestManager::init();
-        ChestManager::LoadChests();
+        ChestManager::loadChests();
     }
 
     public function onDisable() : void{
