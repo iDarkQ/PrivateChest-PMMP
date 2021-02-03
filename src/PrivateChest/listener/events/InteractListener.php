@@ -40,10 +40,10 @@ class InteractListener implements Listener{
 
         $blocks = [];
 
-        array_push($blocks, $block);
+        $blocks[] = $block;
 
         if($tile->isPaired())
-            array_push($blocks, $tile->getPair());
+            $blocks[] = $tile->getPair();
 
         if(ChestManager::isLocked($block->asPosition())) {
 
