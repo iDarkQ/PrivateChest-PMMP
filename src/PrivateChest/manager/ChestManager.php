@@ -21,10 +21,11 @@ class ChestManager{
 
         while($row = $db->fetchArray(SQLITE3_ASSOC)) {
             Server::getInstance()->loadLevel($row["level"]);
-            Server::getInstance()->getLevelByName($row["level"]) ? $level = Server::getInstance()->getLevelByName($row["level"]) : $level = null;
+            $level = Server::getInstance()->getLevelByName($row["level"]);
 
             $chest[] = new Chest($row["owner"], new Position($row["x"], $row["y"], $row["z"], $level));
         }
+
         self::$chests = $chest;
     }
 
@@ -47,7 +48,7 @@ class ChestManager{
         }
     }
 
-    public static function setChest(string $owner, Position $position, int $expire) : void{
+    public static function setChest(string $owner, Position $position) : void{
         self::$chests[] = new Chest($owner, $position);
     }
 
@@ -55,7 +56,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->asPosition()->equals($position))
+            if($chestPosition->asPosition()->equels($position))
                 return $chest;
         }
 
