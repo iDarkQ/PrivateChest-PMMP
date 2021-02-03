@@ -38,7 +38,7 @@ class LockForm extends Form {
                     if(!$player->getLevel()->getBlock($block->asVector3()))
                         continue;
 
-                    ChestManager::setChest($player->getName(), new Position($block->getFloorX(), $block->getFloorY(), $block->getFloorZ(), $block->getLevel()), time() + 60);
+                    ChestManager::setChest($player->getName(), $block->asPosition());
                 }
 
                 $player->sendMessage(Utils::getFromConfig("successful-lock-chest"));
