@@ -14,7 +14,7 @@ class ChestManager{
         Main::getDb()->query("CREATE TABLE IF NOT EXISTS ChestManager (owner TEXT, x INT, y INT, z INT, level TEXT)");
     }
 
-    public static function LoadChests() : void {
+    public static function loadChests() : void {
 
         $chest = [];
         $db = Main::getDb()->query("SELECT * FROM ChestManager");
