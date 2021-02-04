@@ -24,7 +24,7 @@ class InteractListener implements Listener{
         if($e->isCancelled())
             return;
 
-        if($e->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK)
+        if($e->getAction() !== $e::RIGHT_CLICK_BLOCK)
             return;
 
         $block = $e->getBlock();
