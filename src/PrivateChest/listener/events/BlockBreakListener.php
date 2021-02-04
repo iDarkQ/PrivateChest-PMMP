@@ -31,7 +31,7 @@ class BlockBreakListener implements Listener{
         $player = $e->getPlayer();
         $chest = ChestManager::getChest($block->asPosition());
 
-        if($chest->getOwner() === $player->getName() && !$player->hasPermission(Utils::getFromConfig("chest-op-permission", false))){
+        if($chest->getOwner() === $player->getName() || $player->hasPermission(Utils::getFromConfig("chest-op-permission", false))){
             ChestManager::unlockChest($block->asPosition());
             $player->sendMessage(Utils::getFromConfig("break-locked-chest"));
             return;
