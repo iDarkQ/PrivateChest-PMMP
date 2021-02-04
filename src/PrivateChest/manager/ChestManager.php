@@ -56,7 +56,7 @@ class ChestManager{
 
         foreach(self::$chests as $index => $chest){
             $chestPosition = $chest->getChestPosition();
-            if($chestPosition->equels($position))
+            if($chestPosition->equals($position))
                 return $chest;
         }
 
