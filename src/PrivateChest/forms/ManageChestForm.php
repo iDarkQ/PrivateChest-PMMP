@@ -34,7 +34,7 @@ class ManageChestForm extends Form {
         switch($formData){
             case 0:
                 foreach($this->blocks as $block) {
-                    if(!$player->getLevel()->getBlock($block->asVector3()))
+                    if($player->getLevel()->getBlock($block->asVector3())->getId() !== Block::CHEST)
                         continue;
 
                     ChestManager::unlockChest($block->asPosition());
